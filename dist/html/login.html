@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://kit.fontawesome.com/db2bf29261.js" crossorigin="anonymous"></script>
+  <style>
+    header {
+      display: inline;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    #logo {
+      font-family: comic sans ms, sans-serif;
+      font-size: 1.5em;
+      color: whitesmoke;
+      width: 100px;
+      cursor: pointer;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+    }
+
+    nav {
+      list-style: none;
+      width: auto;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      right: 20px;
+      position: absolute;
+      top: 25px;
+
+    }
+
+    #nv li {
+      display: inline-block;
+    }
+
+    #nv li a {
+      text-decoration: none;
+      padding: 10px;
+      margin: 0;
+      color: whitesmoke;
+    }
+
+    #nv #irc::before {
+      content: "IRC stands for 'Internet Relay Chat'. It is a real-time communications protocol that was developed in the late 1980s to enable online discussion via chat channels";
+      position: absolute;
+      top: -200px;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    #nv #jcl::before {
+      content: "JCL is a group of students made up of Cyrik Chen, Jérémy Soler and Laspales Epalla who carried out this project called 'My IRC'";
+      position: absolute;
+      top: -200px;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    #nv #etna::before {
+      content: "ETNA, School of Advanced Digital Technologies, provides work-study training specialized in IT which leads to 3 levels of diplomas: Bac+2, Bac+3 and Bac+5";
+      position: absolute;
+      top: -200px;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    #nv #irc:hover::before,
+    #nv #jcl:hover::before,
+    #nv #etna:hover::before {
+      position: absolute;
+      top: 95%;
+      left: 11%;
+      opacity: 1;
+      width: 270px;
+      text-align: left;
+      color: #F07167;
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 3px;
+      background-color: whitesmoke;
+    }
+
+    #world {
+      font-size: 250px;
+      position: relative;
+      left: 700px;
+      position: absolute;
+      top: -105px;
+      display: none;
+    }
+
+    #lock {
+      position: absolute;
+      top: 13.5%;
+      left: 24%;
+      padding: 0;
+      margin: 0;
+      width: 750px;
+      height: 350px;
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 4px;
+      background-color: rgba(10, 10, 10, 0.2);
+    }
+
+    #log {
+      border: 1px solid whitesmoke;
+      width: 200px;
+      height: 170px;
+      padding-left: 15px;
+      position: absolute;
+      top: 30%;
+      left: 20%;
+      background-color: whitesmoke;
+    }
+
+    #log p {
+      text-align: left;
+      width: 170px;
+      color: darkslategray;
+    }
+
+    #log h2 {
+      font-family: Time New Roman, sans-serif;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    #log2 {
+      font-family: Time New Roman, sans-serif;
+      font-size: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      width: 220px;
+      height: 200px;
+      padding: 15px;
+      color: whitesmoke;
+      background-color: #333;
+      box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.9);
+      position: absolute;
+      top: 22%;
+      left: 46.5%;
+    }
+
+    .inp {
+      border-style: none;
+      border-bottom: 3px solid #F07167;
+      color: whitesmoke;
+      background-color: #333;
+    }
+
+    .inp:focus {
+      outline: none;
+    }
+
+    #send {
+      border-style: none;
+      color: whitesmoke;
+      background-color: darkgrey;
+      border-radius: 3px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #send:hover {
+      background-color: #F07167;
+    }
+
+    footer {
+      width: 100%;
+      height: 190px;
+      background-size: contain;
+      color: whitesmoke;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    #info {
+      padding: 5px;
+      position: absolute;
+      bottom: 5%;
+      right: 10%;
+      text-align: left;
+    }
+
+    #info a {
+      text-decoration: none;
+      color: whitesmoke;
+    }
+
+    #news {
+      padding-left: 25px;
+      text-align: left;
+    }
+
+    #cop p {
+      font-size: 14px;
+      height: 15px;
+      padding-left: 25px;
+      padding-bottom: 25px;
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.4);
+      font-style: italic;
+    }
+
+    #sub {
+      border-style: none;
+      color: whitesmoke;
+      background-color: darkgrey;
+      border-radius: 3px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #sub:hover {
+      background-color: #F07167;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="logo">JCL<sup><i class="fa-solid fa-comments"></i></sup></h1>
+    <nav id="nv">
+      <ul>
+        <li><a href="#" id="irc">IRC</a></li>
+        <li><a href="#" id="jcl">JCL Group </a></li>
+        <li><a href="#" id="etna">about ETNA</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="lock">
+    <div id="log">
+      <br />
+      <h2>Login</h2>
+      <p><small>By logging in, you agree to the ridiculous long terms that you didn't bother to read.</small></p>
+    </div>
+    <div id="log2">
+      <form id="form" action="/login" method="post">
+        <br />
+        <span class="text">Username</span><br /><br /><input type="text" name="username" placeholder="Username"
+          class="inp" value="admin" required><br /><br />
+        <span class="text">Password</span><br /><br /><input type="password" name="password" placeholder="Password"
+          class="inp" value="toto" required><br />
+        <br /><br />
+        <button id="send">Send</button>
+      </form>
+    </div>
+
+  </div>
+  <footer>
+    <p style="text-align: center; color: rgba(255, 255, 255, 0.8);"><i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;<i
+        class="fa-brands fa-linkedin"></i>&nbsp;&nbsp;<i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;<i
+        class="fa-brands fa-square-x-twitter"></i></p>
+    <hr>
+    <div id="news">
+      <h3>NewsLetter</h3>
+      <span>Subscribe to our newsletter to get news and updates on the chat</span><br />
+      <i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;<input type="email" placeholder=" mail" class="inp" />&nbsp;&nbsp;
+      <input type="submit" value="Subscribe" id="sub">
+    </div>
+    <div id="info">
+      <h3 style="text-align: center;">Informations</h3>
+      <ul>
+        <li><a href="#">About us</a></li><br />
+        <li><a href="#">Contact us</a></li><br />
+        <li><a href="#">Privacy policies</a></li><br />
+      </ul>
+    </div>
+    <div id="cop">
+      <p>Unite your words, connect your worlds: JCL chat, the magic of instant conversations &nbsp;&copy; 2023 JCL Etna
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
